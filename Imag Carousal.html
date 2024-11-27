@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Carousel Container */
+        .carousel-container {
+            width: 80%;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Carousel Images */
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slides img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Carousel Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-btn.prev {
+            left: 15px;
+        }
+
+        .carousel-btn.next {
+            right: 15px;
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .indicator.active {
+            background-color: rgb(7, 70, 75);
+        }
+    </style>
+</head>
+<body>
+
+<div class="carousel-container">
+    <!-- Carousel Slides -->
+    <div class="carousel-slides">
+        <img src="./Room Images/YS R 1.1.jpeg" alt="Image 1">
+        <img src="./Room Images/YS R 1.2.jpeg" alt="Image 2">
+        <img src="./Room Images/YS R 1.3.jpeg" alt="Image 3">
+    </div>
+
+    <!-- Carousel Buttons -->
+    <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+    <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+</div>
+
+<!-- Carousel Indicators -->
+<div class="carousel-indicators">
+    <div class="indicator active" onclick="jumpToSlide(0)"></div>
+    <div class="indicator" onclick="jumpToSlide(1)"></div>
+    <div class="indicator" onclick="jumpToSlide(2)"></div>
+</div>
+
+<script>
+    const slides = document.querySelector('.carousel-slides');
+    const indicators = document.querySelectorAll('.indicator');
+    const totalSlides = slides.children.length;
+    let currentIndex = 0;
+
+    // Function to move slides
+    function moveSlide(direction) {
+        currentIndex += direction;
+
+        if (currentIndex < 0) {
+            currentIndex = totalSlides - 1; // Wrap around to last slide
+        } else if (currentIndex >= totalSlides) {
+            currentIndex = 0; // Wrap around to first slide
+        }
+
+        updateCarousel();
+    }
+
+    // Function to jump to a specific slide
+    function jumpToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+
+    // Update Carousel View
+    function updateCarousel() {
+        slides.style.transform = `translateX(${-currentIndex * 100}%)`;
+
+        // Update active indicator
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+    }
+</script>
+
+</body>
+</html>
+

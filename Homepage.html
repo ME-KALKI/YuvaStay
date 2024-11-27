@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuvaStay</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+        }
+
+        header {
+            background-color: rgb(7, 70, 75);
+            padding: 20px;
+            text-align: left;
+            font-size: 2.5em;
+            color: #ede8e8;
+        }
+
+        .main-content {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            gap: 25px;
+            align-items: center;
+            width: 800px;
+        }
+
+        footer {
+            background-color: rgb(7, 70, 75);
+            color: white;
+            text-align: left;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        button {
+        background-color: rgb(7, 70, 75); /* Primary theme color */
+        color: white; /* Text color for contrast */
+        border: none;
+        padding: 10px 20px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 1em;
+        font-weight: bold;
+        border-radius: 15px; /* Rounded button */
+        cursor: pointer;
+        width: 200px;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    }
+
+    button:hover {
+        background-color: rgb(5, 58, 63); /* Slightly darker shade on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Elevated shadow on hover */
+        transform: translateY(-2px); /* Lift effect on hover */
+    }
+
+    button:active {
+        background-color: rgb(3, 45, 49); /* Even darker shade when clicked */
+        transform: translateY(1px); /* Subtle press effect */
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Reduced shadow when active */
+    }
+    </style>
+</head>
+<body>
+<header>
+    YuvaStay
+</header>
+<div class="main-content">
+    <div class="filter-bar">
+        <!-- College Dropdown -->
+        <select id="college-select">
+            <option value="" disabled selected>Select a college</option>
+            <option value="MIT">MIT World Peace University</option>
+            <option value="Fergusson">Fergusson College</option>
+        </select>
+
+        <!-- Gender Dropdown -->
+        <select id="gender-select">
+            <option value="" disabled selected>Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <!-- Navigate Button -->
+        <button onclick="navigateToPage()">Go</button>
+    </div>
+</div>
+<footer>
+    <a href="./About.html" style="color: #f4f4f4; text-decoration: none;" target="frame2">Home</a>
+</footer>
+
+<script>
+    // Function to navigate based on selected college and gender
+    function navigateToPage() {
+        const collegeSelect = document.getElementById('college-select');
+        const genderSelect = document.getElementById('gender-select');
+
+        const college = collegeSelect.value;
+        const gender = genderSelect.value;
+
+        // Validate selections
+        if (!college || !gender) {
+            alert("Please select both a college and a gender.");
+            return;
+        }
+
+        // Define mappings of options to links
+        const links = {
+            "MIT": {
+                "Male": "./MIT Male.html",
+                "Female": "./MIT Female.html"
+            },
+            "Fergusson": {
+                "Male": "./Fergusson Male.html",
+                "Female": "./Fergusson Female.html"
+            }
+        };
+
+        // Redirect to the appropriate page
+        const targetPage = links[college][gender];
+        if (targetPage) {
+            const target = "frame2"; // Change "frame2" to "_blank" for a new tab
+            window.open(targetPage, target);
+        } else {
+            alert("Invalid selection.");
+        }
+    }
+</script>
+</body>
+</html>
+

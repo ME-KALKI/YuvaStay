@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 BHK | Shivaji Nagar | 4 Sharing</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        /* Carousel Container */
+        .carousel-container {
+            width: 100%;
+            height: 400px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        /* Carousel Images */
+        .carousel-slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;  /* Each slide takes full width */
+            height: 400px;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Carousel Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .carousel-btn.prev {
+            left: 15px;
+        }
+        .carousel-btn.next {
+            right: 15px;
+        }
+        /* Carousel Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .indicator.active {
+            background-color: rgb(7, 70, 75);
+        }
+        /* Property details */
+        .details {
+            background-color: rgb(7,70,75);
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            border-radius: 15px; /* Rounded corners for details section */
+        }
+        .details h3 {
+            margin-top: 0;
+        }
+        /* Facilities Section */
+        .facilities {
+            background-color: rgb(7,70,75);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 15px; /* Rounded corners for facilities section */
+        }
+        .facilities-icons {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .facility {
+            text-align: center;
+            margin: 10px;
+            background-color: white; /* Background color for square divisions */
+            border-radius: 10px; /* Rounded corners for facility squares */
+            padding: 20px; /* Padding for spacing */
+            width: 80px; /* Fixed width for square shape */
+            height: 80px; /* Fixed height for square shape */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effect */
+        }
+        .facility img {
+            width: 50px;
+            height: 50px;
+        }
+        .facility:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect on hover */
+        }
+        /* Map Section */
+        .map-section {
+            margin-top: 20px;
+            text-align: center;
+            padding-bottom: 50px;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px; /* Rounded corners for the map */
+            transition: transform 0.3s; /* Transition for hover effect */
+        }
+        iframe:hover {
+            transform: scale(1.02); /* Slightly scale up on hover */
+        }
+        /* Enhanced WhatsApp Button */
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 20px;
+            width: 300px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E); /* Gradient background */
+            color: white;
+            border-radius: 15px;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transition effects */
+        }
+        .whatsapp-btn:hover {
+            background: linear-gradient(135deg, #20b55b, #0e6b5d); /* Darker gradient on hover */
+            transform: translateY(-3px); /* Slight lift effect on hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+        .whatsapp-btn:active {
+            transform: translateY(0); /* Return to original position when clicked */
+        }
+    </style>
+</head>
+<body>
+
+    <body>
+        <div class="container">
+            <div class="carousel-container">
+                <!-- Carousel Slides -->
+                <div class="carousel-slides">
+                    <div class="slide">
+                        <img src="./Room Images/YS R 13.1.jpeg" alt="Image 1">
+                    </div>
+                    <div class="slide">
+                        <img src="./Room Images/YS R 13.2.jpeg" alt="Image 2">
+                    </div>
+                    <div class="slide">
+                        <img src="./Room Images/YS R 13.3.jpeg" alt="Image 3">
+                    </div>
+                </div>
+                <!-- Carousel Buttons -->
+                <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+                <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+            </div>
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <div class="indicator active" onclick="jumpToSlide(0)"></div>
+                <div class="indicator" onclick="jumpToSlide(1)"></div>
+                <div class="indicator" onclick="jumpToSlide(2)"></div>
+            </div>
+
+        <!-- Details Section -->
+        <div class="details">
+          <h3>  1 BHK | Shivaji Nagar | 4 Sharing</h3>
+           <p> Location: Pune</p>
+           <p> Monthly Rent: ₹15,000</p>
+        </div>
+
+        <!-- Facilities Section -->
+        <div class="facilities">
+            <div class="facilities-icons">
+                <div class="facility">
+                    <img src="./Room Images/Laundry icon.png" alt="Laundry">
+                    <p>Laundry</p>
+                </div>
+                <div class="facility">
+                    <img src="./Room Images/Wifi Icon.png" alt="WiFi">
+                    <p>WiFi</p>
+                </div>
+                <div class="facility">
+                    <img src="./Room Images/Bed icon.png" alt="Bed">
+                    <p>Bed</p>
+                </div>
+                <div class="facility">
+                    <img src="./Room Images/Fridge icon.png" alt="Fridge">
+                    <p>Fridge</p>
+                </div>
+                <div class="facility">
+                    <img src="./Room Images/Hot water icon.png" alt="24hr Hot Water">
+                    <p>Hot water</p>
+                </div>
+                <div class="facility">
+                    <img src="./Room Images/Cupboard icon.png" alt="Cupboard">
+                    <p>Cupboard</p>
+                </div>
+                <div class="facility">
+                    <img src="./Room Images/Study table icon.png" alt="Study table">
+                    <p>Study table</p>
+                </div>
+            </div>
+        </div>
+
+         <!-- WhatsApp Button -->
+         <div style="text-align:center;">
+            <a href="https://wa.me/your-whatsapp-number" class="whatsapp-btn">Talk to Us</a>
+        </div>
+
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019643576902!2d144.96305831532118!3d-37.81362897975144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e33!2sRMIT%20School%20of%20Management!5e0!3m2!1sen!2sin!4v1630150407615!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+    </div>
+
+    <script>
+        const slides = document.querySelector('.carousel-slides');
+         const indicators = document.querySelectorAll('.indicator');
+         const totalSlides = document.querySelectorAll('.slide').length;
+         let currentIndex = 0;
+ 
+         // Function to move slides
+         function moveSlide(direction) {
+             currentIndex += direction;
+             if (currentIndex < 0) {
+                 currentIndex = totalSlides - 1; // Wrap around to last slide
+             } else if (currentIndex >= totalSlides) {
+                 currentIndex = 0; // Wrap around to first slide
+             }
+             updateCarousel();
+         }
+ 
+         // Function to jump to a specific slide
+         function jumpToSlide(index) {
+             currentIndex = index;
+             updateCarousel();
+         }
+ 
+         // Update Carousel View
+         function updateCarousel() {
+             slides.style.transform = `translateX(${-currentIndex * 100}%)`;
+             // Update active indicator
+             indicators.forEach((indicator, index) => {
+                 indicator.classList.toggle('active', index === currentIndex);
+             });
+         }
+         setInterval(() => {
+             moveSlide(1);
+         }, 3000);
+     </script>
+
+
+</body>
+</html>
